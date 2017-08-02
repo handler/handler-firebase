@@ -1,0 +1,49 @@
+{
+  "name": "handler-firebase",
+  "description": "Handler.js for Cloud Functions for Firebase",
+  "version": "0.1.0",
+  "license": "MIT",
+  "author": {
+    "name": "Pilwon Huh",
+    "email": "pilwon@gmail.com"
+  },
+  "homepage": "https://github.com/handler/handler-firebase",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/handler/handler-firebase.git"
+  },
+  "keywords": [
+    "handler",
+    "server",
+    "firebase",
+    "functions",
+    "google",
+    "cloud",
+    "serverless",
+    "typescript",
+    "ts",
+    "library"
+  ],
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "dependencies": {
+    "@types/express": "^4.0.36",
+    "@types/node": "^8.0.19",
+    "express": "^4.15.3",
+    "firebase-admin": "^5.1.0",
+    "firebase-functions": "^0.6.1",
+    "handler.js": "^0.1.4"
+  },
+  "devDependencies": {
+    "tslint": "^5.5.0",
+    "tslint-pilwon": "^0.1.6",
+    "typescript": "^2.1.6"
+  },
+  "peerDependencies": {
+    "handler.js": "0.1.x"
+  },
+  "scripts": {
+    "build": "rm -fr build && tsc",
+    "dev": "tsc -w"
+  }
+}
