@@ -1,7 +1,7 @@
 {
   "name": "handler-firebase",
   "description": "Handler.js for Cloud Functions for Firebase",
-  "version": "0.1.2",
+  "version": "0.2.0",
   "license": "MIT",
   "author": {
     "name": "Pilwon Huh",
@@ -32,7 +32,7 @@
     "express": "^4.15.3",
     "firebase-admin": "^5.1.0",
     "firebase-functions": "^0.6.1",
-    "handler.js": "^0.1.4",
+    "handler.js": "^0.2.5",
     "request": "^2.81.0"
   },
   "devDependencies": {
@@ -41,10 +41,11 @@
     "typescript": "^2.1.6"
   },
   "peerDependencies": {
-    "handler.js": "0.1.x"
+    "handler.js": "0.2.x"
   },
   "scripts": {
-    "build": "rm -fr build && tsc",
+    "build": "tsc",
+    "clean": "rm -fr build",
     "dev": "tsc -w"
   }
 }
