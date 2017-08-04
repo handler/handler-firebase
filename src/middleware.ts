@@ -39,7 +39,7 @@ export function middlewareFromHTTPApplication(app: HTTPApplication): Handler {
       } else if (ctx.res.status) {
         res.sendStatus(ctx.res.status);
       } else {
-        next(new Error('missing response'));
+        throw new Error('missing response');
       }
     } catch (err) {
       next(err);
