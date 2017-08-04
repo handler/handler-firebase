@@ -1,10 +1,10 @@
 import { Handler, NextFunction, Request, Response } from 'express';
 import { FunctionApplication, HTTPApplication } from 'handler.js';
 
-export function middlewareFromFunctionRouter(router: FunctionApplication): Handler {
+export function middlewareFromFunctionApplication(app: FunctionApplication): Handler {
   return async (req: Request, res: Response, next: NextFunction) => {
     try {
-      const hRes = await router.run({
+      const hRes = await app.run({
         body: req.body,
         path: req.path,
       });
@@ -15,10 +15,10 @@ export function middlewareFromFunctionRouter(router: FunctionApplication): Handl
   };
 }
 
-export function middlewareFromHTTPRouter(router: HTTPApplication): Handler {
+export function middlewareFromHTTPApplication(app: HTTPApplication): Handler {
   return async (req: Request, res: Response, next: NextFunction) => {
     try {
-      const ctx = await router.run({
+      const ctx = await app.run({
         body: req.body,
         headers: req.headers,
         method: req.method,

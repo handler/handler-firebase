@@ -3,28 +3,28 @@ import { https } from 'firebase-functions';
 import { FunctionApplication, FunctionHandler, HTTPApplication, HTTPHandler } from 'handler.js';
 
 import { Handler } from './handler';
-import { middlewareFromFunctionRouter, middlewareFromHTTPRouter } from './middleware';
+import { middlewareFromFunctionApplication, middlewareFromHTTPApplication } from './middleware';
 
-export function fromFunctionHandler(handler: FunctionHandler): Handler {
-  const router = new FunctionApplication();
-  router.all('*', handler);
-  return fromFunctionRouter(router);
+export function fromFunctionApplication(_app: FunctionApplication): Handler {
+  const app = express();
+  app.use(middlewareFromFunctionApplication(_app));
+  return https.onRequest(app);
 }
 
-export function fromFunctionRouter(router: FunctionApplication): Handler {
+export function fromFunctionHandler(handler: FunctionHandler): Handler {
+  const app = new FunctionApplication();
+  app.all('*', handler);
+  return fromFunctionApplication(app);
+}
+
+export function fromHTTPApplication(_app: HTTPApplication): Handler {
   const app = express();
-  app.use(middlewareFromFunctionRouter(router));
+  app.use(middlewareFromHTTPApplication(_app));
   return https.onRequest(app);
 }
 
 export function fromHTTPHandler(handler: HTTPHandler): Handler {
-  const router = new HTTPApplication();
-  router.all('*', handler);
-  return fromHTTPRouter(router);
-}
-
-export function fromHTTPRouter(router: HTTPApplication): Handler {
-  const app = express();
-  app.use(middlewareFromHTTPRouter(router));
-  return https.onRequest(app);
+  const app = new HTTPApplication();
+  app.all('*', handler);
+  return fromHTTPApplication(app);
 }
