@@ -1,7 +1,7 @@
 {
   "name": "handler-firebase",
   "description": "Handler.js for Cloud Functions for Firebase",
-  "version": "0.2.2",
+  "version": "0.3.0",
   "license": "MIT",
   "author": {
     "name": "Pilwon Huh",
@@ -32,7 +32,7 @@
     "express": "^4.15.3",
     "firebase-admin": "^5.1.0",
     "firebase-functions": "^0.6.1",
-    "handler.js": "^0.2.6",
+    "handler.js": "^0.3.0",
     "request": "^2.81.0"
   },
   "devDependencies": {
